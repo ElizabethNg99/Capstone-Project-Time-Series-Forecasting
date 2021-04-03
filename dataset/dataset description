@@ -1,3 +1,7 @@
+The dataset we used is downloaded from Kaggle.
+Kaggle dataset url: https://www.kaggle.com/taranvee/smart-home-dataset-with-weather-information
+Since the dataset is more than 25MB and cannot be uploaded onto github, please go to Kaggle website to download the dataset if any reference is necessary.
+
 The original dataset has 32 columns as shown below. 
 However, cleaning of data is necessary as there are some columns which contain objects data type which cannot be pass into the models. 
 Besides, some columns are duplicate of each other (in term of values).
