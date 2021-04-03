@@ -9,6 +9,7 @@ Besides, some columns are duplicate of each other (in term of values).
 Moreover, this dataset provides instantaneous kW consumed by each appliance/location, so we need to change the power unit into energy unit (kWh)
 Since the data provides readings with a time span of 1 minute of house appliances in kW from a smart meter and weather conditions, 
 we will first get the mean value of readings in time span of 1 hour, then convert to time span of 1 day by aggregating the readings. 
+eg.       dataset.resample('H').mean()               and               dataset.resample('D').sum() 
 We only do the modelings in terms of days, not month and year as the data points created into month and year are not enough to model.   
 
 
