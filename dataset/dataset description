@@ -1,0 +1,90 @@
+The original dataset has 32 columns as shown below. 
+However, cleaning of data is necessary as there are some columns which contain objects data type which cannot be pass into the models. 
+Besides, some columns are duplicate of each other (in term of values).
+
+Moreover, this dataset provides instantaneous kW consumed by each appliance/location, so we need to change the power unit into energy unit (kWh)
+Since the data provides readings with a time span of 1 minute of house appliances in kW from a smart meter and weather conditions, 
+we will first get the mean value of readings in time span of 1 hour, then convert to time span of 1 day by aggregating the readings. 
+We only do the modelings in terms of days, not month and year as the data points created into month and year are not enough to model.   
+
+
+Original dataset: 
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 503911 entries, 0 to 503910
+Data columns (total 32 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   time                 503911 non-null  object               to be removed and added as the index of the data
+ 1   use [kW]             503910 non-null  float64
+ 2   gen [kW]             503910 non-null  float64
+ 3   House overall [kW]   503910 non-null  float64              duplicate of use column
+ 4   Dishwasher [kW]      503910 non-null  float64
+ 5   Furnace 1 [kW]       503910 non-null  float64
+ 6   Furnace 2 [kW]       503910 non-null  float64
+ 7   Home office [kW]     503910 non-null  float64
+ 8   Fridge [kW]          503910 non-null  float64
+ 9   Wine cellar [kW]     503910 non-null  float64
+ 10  Garage door [kW]     503910 non-null  float64
+ 11  Kitchen 12 [kW]      503910 non-null  float64
+ 12  Kitchen 14 [kW]      503910 non-null  float64
+ 13  Kitchen 38 [kW]      503910 non-null  float64
+ 14  Barn [kW]            503910 non-null  float64
+ 15  Well [kW]            503910 non-null  float64
+ 16  Microwave [kW]       503910 non-null  float64
+ 17  Living room [kW]     503910 non-null  float64
+ 18  Solar [kW]           503910 non-null  float64              duplicate of gen column
+ 19  temperature          503910 non-null  float64
+ 20  icon                 503910 non-null  object               to be removed
+ 21  humidity             503910 non-null  float64
+ 22  visibility           503910 non-null  float64
+ 23  summary              503910 non-null  object               to be removed
+ 24  apparentTemperature  503910 non-null  float64
+ 25  pressure             503910 non-null  float64
+ 26  windSpeed            503910 non-null  float64
+ 27  cloudCover           503910 non-null  object               to be changed into categorical value
+ 28  windBearing          503910 non-null  float64
+ 29  precipIntensity      503910 non-null  float64
+ 30  dewPoint             503910 non-null  float64
+ 31  precipProbability    503910 non-null  float64
+dtypes: float64(28), object(4)
+memory usage: 123.0+ MB 
+
+
+
+Data after cleaning:
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 503910 entries, 2016-01-01 00:00:00 to 2016-12-15 22:29:00
+Freq: T
+Data columns (total 24 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   use                  503910 non-null  float64
+ 1   gen                  503910 non-null  float64
+ 2   Dishwasher           503910 non-null  float64
+ 3   Home office          503910 non-null  float64
+ 4   Fridge               503910 non-null  float64
+ 5   Wine cellar          503910 non-null  float64
+ 6   Garage door          503910 non-null  float64
+ 7   Barn                 503910 non-null  float64
+ 8   Well                 503910 non-null  float64
+ 9   Microwave            503910 non-null  float64
+ 10  Living room          503910 non-null  float64
+ 11  temperature          503910 non-null  float64
+ 12  humidity             503910 non-null  float64
+ 13  visibility           503910 non-null  float64
+ 14  apparentTemperature  503910 non-null  float64
+ 15  pressure             503910 non-null  float64
+ 16  windSpeed            503910 non-null  float64
+ 17  cloudCover           503910 non-null  float64
+ 18  windBearing          503910 non-null  float64
+ 19  precipIntensity      503910 non-null  float64
+ 20  dewPoint             503910 non-null  float64
+ 21  precipProbability    503910 non-null  float64
+ 22  Furnace              503910 non-null  float64
+ 23  Kitchen              503910 non-null  float64
+dtypes: float64(24)
+memory usage: 96.1 MB
