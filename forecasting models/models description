@@ -1,0 +1,21 @@
+We have used several models trying to forecast the overall energy usage by household using the dataset from kaggle
+
+Kaggle dataset url: https://www.kaggle.com/taranvee/smart-home-dataset-with-weather-information
+
+Models used:
+1. Naive method
+2. Simple moving average forecasting method
+3. Exponential weighted moving average forecasting method
+4. Holts and Holts-Winter method
+5. ARIMA model
+6. SARIMA model
+7. Multilayer perceptron neural network
+
+The rmse loss for each model that we build are stated below:
+1. Naive method                                                                    5.86
+2. Simple moving average forecasting method (for 14 days)                          5.16
+3. Exponential weighted moving average forecasting method (for 14 days)            5.03
+4. Holts and Holts-Winter method
+5. ARIMA model
+6. SARIMA model
+7. Multilayer perceptron neural network                                            5.77
