@@ -12,7 +12,7 @@ streamlit run on localhost
  
  -$ pip install matplotlib
  
- -$ pip install sklearn-metrics
+ -$ pip install scikit-metrics
  
  -$ pip install plotly
  
