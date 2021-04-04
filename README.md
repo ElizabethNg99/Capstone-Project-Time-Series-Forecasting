@@ -27,6 +27,7 @@ streamlit run on localhost
    This repo contains several notebooks that forecast the overall electricity usage in a household using different models.
    
 2. Install streamlit dependencies as installation instructions above 
+  
    Run the myapp.py in terminal to enable streamlit running in localhost. 
 
    The myapp.py uses forecating result from simple exponential smoothing model. If want to use other model in myapp.py, modification is required.   
