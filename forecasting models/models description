@@ -17,5 +17,5 @@ The rmse loss for each model that we build are stated below:
 3. Exponential weighted moving average forecasting method (for 14 days)            5.03
 4. Holts and Holts-Winter method                                                   7.69
 5. ARIMA model                                                                     7.08
-6. SARIMA model                                                                   42.37
+6. SARIMA model                                                                    8.09
 7. Multilayer perceptron neural network                                            5.77
