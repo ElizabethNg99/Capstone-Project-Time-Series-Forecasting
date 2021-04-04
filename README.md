@@ -19,6 +19,7 @@ streamlit run on localhost
 2. Get the application file (myapp.py) and dataset file (HomeC.csv) in one folder
 
 3. Open command prompt and run 
+ 
  -$ streamlit run myapp.py
 
 ### Usage
@@ -27,4 +28,5 @@ streamlit run on localhost
    
 2. Install streamlit dependencies as installation instructions above 
    Run the myapp.py in terminal to enable streamlit running in localhost. 
+
    The myapp.py uses forecating result from simple exponential smoothing model. If want to use other model in myapp.py, modification is required.   
