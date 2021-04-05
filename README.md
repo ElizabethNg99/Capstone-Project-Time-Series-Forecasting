@@ -8,19 +8,19 @@ This project uses dataset from Kaggle (https://www.kaggle.com/taranvee/smart-hom
 streamlit run on localhost
 1. install dependecies
 
- -$ 'pip install streamlit'
+ -$ `pip install streamlit`
  
- -$ pip install matplotlib
+ -$ `pip install matplotlib`
  
- -$ pip install scikit-metrics
+ -$ `pip install scikit-metrics`
  
- -$ pip install plotly
+ -$ `pip install plotly`
  
 2. Get the application file (myapp.py) and dataset file (HomeC.csv) in one folder
 
 3. Open command prompt and run 
  
- -$ streamlit run myapp.py
+ -$ `streamlit run myapp.py`
 
 ### Usage
 1. Download the whole repo  
