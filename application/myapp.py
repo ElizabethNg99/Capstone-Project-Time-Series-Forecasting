@@ -6,6 +6,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 import math
 import datetime
 import plotly.express as px
+import altair as alt
+import numpy as np
 
 header = st.beta_container()
 forecast = st.beta_container()
@@ -25,9 +27,8 @@ with dataset:
 	#st.header("Smart Home Dataset")
 	home_data = pd.read_csv("HomeC.csv")
 	# st.write(home_data.head())
-	# st.subheader("Energy Usage")
 	usage = pd.DataFrame(home_data["use [kW]"].value_counts()).head(50)
-	#st.bar_chart(usage)
+
 
 with data_clean:
 	#st.header("Data Cleaning")
@@ -128,11 +129,11 @@ with daily_statistic:
 with energy_usage:
 
 	st.subheader("Statistic of Each Home Appliances Energy Usage Over the Year")
-	appliances_list = st.selectbox("Select Appliances", ("Dishwasher", "Home office", "Wine cellar", "Garage door", "Barn", "Well", "Microwave", "Living room" "Kitchen", "Furnace", "Fridge"))
+	appliances_list = st.selectbox("Select Appliances", ("Dishwasher", "Home office", "Wine cellar", "Garage door", "Barn", "Well", "Microwave", "Living room" ,"Kitchen", "Furnace", "Fridge"))
 	appliances_chart = pd.DataFrame(data_per_day[appliances_list])
 	appliances_mean = pd.DataFrame(data_per_day[appliances_list]).mean()
 	st.line_chart(appliances_chart)
-	st.write("Mean Value for ",appliances_list,": ",appliances_mean.iloc[0],"kW")
+	st.write("Mean Value for ",appliances_list,": ",appliances_mean.iloc[0],"kWh per day")
 
 with forecast:
 	st.subheader("Forecast Home Appliances Energy Usage")
@@ -140,14 +141,31 @@ with forecast:
 	date_input = date_input.strftime("%Y-%m-%d 00:00:00")
 	start_date = pd.to_datetime(date_input) - pd.DateOffset(days=14)
 
-	data_use = data_per_day.use.loc[start_date:pd.to_datetime(date_input)-pd.DateOffset(days=1)]
+	data_per_day['Date'] = data_per_day.index
+	data_per_day['y'] = data_per_day['use']
+
+	data_use = data_per_day.loc[start_date:pd.to_datetime(date_input)-pd.DateOffset(days=1),'Date':'y']
+	data_use['category'] = 'Overall energy usage history'
 	# st.write(data_use)
 
-	data_ewma14 = data_per_day.ewma_14.iloc[(data_per_day.index >= pd.to_datetime(date_input)-pd.DateOffset(days=1)) & (data_per_day.index < pd.to_datetime(date_input)+pd.DateOffset(days=1))]
+	data_ewma14 = data_per_day.loc[pd.to_datetime(date_input)-pd.DateOffset(days=1):date_input,['Date','ewma_14']]
+	data_ewma14['category'] = 'Forecast'
+	data_ewma14.loc[data_ewma14.index[0],'ewma_14'] = data_use.loc[data_use.index[-1],'y']
+	data_ewma14 = data_ewma14.rename(columns={'ewma_14':'y'})
 	# st.write(data_ewma14)
-	data_ewma14.iloc[0] = data_use.iloc[-1]
 
-	data_concat = pd.concat([data_use, data_ewma14],axis=1)
+	
+	data_concat = pd.concat([data_use, data_ewma14],axis=0)
 	f_chart = pd.DataFrame(data_concat)
-	f_chart.columns = ['Overall energy usage history','Forecast']
-	st.line_chart(f_chart) 
+
+	line_chart = alt.Chart(f_chart).mark_line().encode(
+    alt.X('Date', title='Date'),
+    alt.Y('y', title='Energy usage (kWh)'),
+    color='category:N'
+).properties(
+    # title=''
+    width=680,
+    height=300
+)
+
+	st.altair_chart(line_chart)
