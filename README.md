@@ -8,7 +8,7 @@ This project uses dataset from Kaggle (https://www.kaggle.com/taranvee/smart-hom
 streamlit run on localhost
 1. install dependecies
 
- -$ pip install streamlit
+ -$ 'pip install streamlit'
  
  -$ pip install matplotlib
  
