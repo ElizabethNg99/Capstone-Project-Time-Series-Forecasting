@@ -23,8 +23,7 @@ This project uses dataset from Kaggle (https://www.kaggle.com/taranvee/smart-hom
    
 5. Download the dataset from Kaggle  
    Since there is a size limitation of file, we are not able to upload the dataset together in this repo.  
-   Thus, please go to Kaggle website https://www.kaggle.com/taranvee/smart-home-dataset-with-weather-information and download the HomeC.csv dataset,   
-   then manually move the HomeC.csv file into the dataset folder in this repo.  
+   Thus, please go to Kaggle website https://www.kaggle.com/taranvee/smart-home-dataset-with-weather-information and download the HomeC.csv dataset, then manually move the HomeC.csv file into the dataset folder in this repo.  
 
 6. Create conda environment and download the required dependencies   
    In anaconda prompt or command prompt, change directory (cd) to the repo, then create the conda environment by typing `conda env create -f environment.yml`   
@@ -35,7 +34,7 @@ This project uses dataset from Kaggle (https://www.kaggle.com/taranvee/smart-hom
 1. Activate the conda environmet  
    Type `conda activate time-series-streamlit` to activate the environment.  
    
-2. Activate streamlit UI
+2. Activate streamlit UI  
    Run `streamlit run myapp.py` in anaconda prompt or command prompt to enable streamlit running in localhost.   
    The myapp.py uses forecating result from simple exponential smoothing model. If want to use other model in myapp.py, modification is required.  
    
