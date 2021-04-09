@@ -1,0 +1,28 @@
+name: time-series-streamlit
+channels:
+  - pytorch
+  - saravji
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - cudatoolkit=10.2
+  - pytorch
+  - ipykernel
+  - scikit-learn
+  - matplotlib
+  - libarchive
+  - pandas
+  - notebook
+  - pmdarima
+  - pandas-datareader
+  - seaborn
+  - sktime
+  - plotly
+  - pip
+  - pip: 
+    - streamlit
+    - torchsummaryX
+
+ 
+
