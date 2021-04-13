@@ -1,0 +1,13 @@
+streamlit
+torchsummaryX
+python=3.7
+pytorch
+scikit-learn
+matplotlib
+libarchive
+pandas
+pandas-datareader
+seaborn
+sktime
+plotly
+pip
