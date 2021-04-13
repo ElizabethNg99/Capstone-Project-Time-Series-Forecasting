@@ -1,9 +1,1 @@
 streamlit
-pandas
-scikit-learn
-math
-datetime
-plotly
-altair
-numpy
-pathlib
