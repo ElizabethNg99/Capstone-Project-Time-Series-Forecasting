@@ -1,6 +1,6 @@
 streamlit
 torchsummaryX
-python=3.7
+python
 pytorch
 scikit-learn
 matplotlib
@@ -10,4 +10,3 @@ pandas-datareader
 seaborn
 sktime
 plotly
-pip
