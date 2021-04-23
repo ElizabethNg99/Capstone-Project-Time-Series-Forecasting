@@ -26,7 +26,7 @@ with header:
 
 with dataset:
 	#st.header("Smart Home Dataset")
-	home_data = pd.read_csv("dataset/HomeC.csv")
+	home_data = pd.read_csv("C:\Users\boonkai.yeoh\Documents\GitHub\Capstone-Project-Time-Series-Forecasting")
 	# st.write(home_data.head())
 	usage = pd.DataFrame(home_data["use [kW]"].value_counts()).head(50)
 

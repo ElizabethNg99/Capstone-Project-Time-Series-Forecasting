@@ -44,3 +44,6 @@ This project uses dataset from Kaggle (https://www.kaggle.com/taranvee/smart-hom
    
 4. Play with the jupyter notebooks and UI  
    Tweak the parameters or anything in the jupyter notebooks and UI, experiment and have fun!  
+
+5. Activate throght Heroku (Cloud Application Platform)<br>
+Please click [here](https://time-series-forecast-apps.herokuapp.com/) to run the UI in cloud.
